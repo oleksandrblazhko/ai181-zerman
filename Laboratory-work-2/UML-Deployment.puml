@@ -1,0 +1,41 @@
+@startuml
+
+title UML-діаграма розгортання ПП
+
+left to right direction
+
+skinparam componentStyle uml1
+
+node "TV/Desktop/Laptop/Tablet/Smartphone" as device {
+    node "<<Any OS>>" {
+        node "<<Web Browser>>" {
+            component [JavaScript Framework]
+        }
+    }
+}
+
+interface User
+
+User -- device
+
+node "<<HTTP-server>>" as HTTPServer {
+	node "<<Operating System Linux>>" as l1 {
+	    node "<<Node.js Server>>" {
+		    component [Express.js Application]
+		}
+	}
+}
+
+device -- HTTPServer
+
+node "<<MongoDB Server>>" as mongoServer {
+	node "<<Operating System Linux>>" as l2 {
+	    node "<<Database Server MongoDB>>" {
+		    database JSON
+		}
+	}
+}
+
+HTTPServer -- mongoServer
+
+@enduml
